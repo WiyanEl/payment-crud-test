@@ -3,7 +3,6 @@ package auth
 import (
 	"database/sql"
 	"errors"
-	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -90,13 +89,23 @@ func Register(db *sql.DB) fiber.Handler {
 		).Scan(&userID)
 
 		if err != nil {
-			log.Printf("Register user error: %v", err)
+			type sqlStater interface {
+				SQLState() string
+			}
+
+			var pgErr sqlStater
+			if errors.As(err, &pgErr) && pgErr.SQLState() == "23505" {
+				return c.Status(409).JSON(fiber.Map{
+					"success": false,
+					"message": "Email is already registered",
+				})
+			}
 
 			return c.Status(500).JSON(fiber.Map{
 				"success": false,
 				"message": "Failed to register user",
 			})
-		}
+	}
 
 		return c.Status(201).JSON(fiber.Map{
 			"success": true,

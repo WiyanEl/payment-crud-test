@@ -1,0 +1,376 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #1f2937;
+  background: #f3f6fa;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+}
+
+.auth-card h1,
+.page-container h1 {
+  margin: 0;
+}
+
+.auth-card p {
+  margin: 0 0 8px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.auth-card label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.auth-card input:focus {
+  border-color: #2387cf;
+  box-shadow: 0 0 0 3px rgba(35, 135, 207, 0.12);
+}
+
+.auth-card button {
+  margin-top: 8px;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  background: #2387cf;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-card a {
+  color: #2387cf;
+  text-decoration: none;
+}
+
+.error-message,
+.success-message {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.error-message {
+  color: #b91c1c;
+  background: #fef2f2;
+}
+
+.success-message {
+  color: #166534;
+  background: #f0fdf4;
+}
+
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+
+  .page-container {
+    padding: 24px 16px;
+  }
+}
+
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.dashboard-header p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.toolbar button,
+.state-message button,
+.payment-form button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  background: #2387cf;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.table-panel,
+.form-panel {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.payments-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.payments-table th,
+.payments-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.payments-table th {
+  color: #64748b;
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.payments-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.secondary-text {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-success {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.status-failed {
+  color: #b91c1c;
+  background: #fee2e2;
+}
+
+.status-pending {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.action-buttons,
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-small {
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.button-secondary {
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  background: white;
+}
+
+.button-danger {
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  background: #fff;
+}
+
+.button-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.state-message {
+  padding: 48px 24px;
+  text-align: center;
+  color: #64748b;
+}
+
+.state-message h2 {
+  color: #1f2937;
+}
+
+.form-panel {
+  margin-bottom: 20px;
+}
+
+.payment-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 24px;
+}
+
+.payment-form h2 {
+  margin: 0 0 8px;
+}
+
+.payment-form label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.payment-form input,
+.payment-form select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+}
+
+.payment-form input:focus,
+.payment-form select:focus {
+  outline: 2px solid rgba(35, 135, 207, 0.2);
+  border-color: #2387cf;
+}
+
+.form-actions {
+  margin-top: 8px;
+}
+
+.form-actions .button-secondary {
+  color: #334155;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.text-button {
+  margin-left: 12px;
+  border: 0;
+  color: #2387cf;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 65px;
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #2387cf;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.password-toggle:hover {
+  color: #1769aa;
+}
+
+@media (max-width: 640px) {
+  .dashboard-header {
+    flex-direction: column;
+  }
+
+  .toolbar,
+  .pagination {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pagination .action-buttons {
+    width: 100%;
+  }
+
+  .pagination button {
+    flex: 1;
+  }
+}
